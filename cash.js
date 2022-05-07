@@ -1,6 +1,7 @@
-const cashMachine = (amount) => {
-    const notes = [100, 50, 20, 10, 5, 2, 1];
+const cashMachine = async (amount) => {
     let result = [];
+    const notes = [25, 100, 50, 20, 10, 5, 2, 1];
+    notes.sort((a, b) => b - a);
 
     notes.map((note) => {
         let count = Math.floor(amount / note);
@@ -11,8 +12,9 @@ const cashMachine = (amount) => {
     return result;
 }
 
-const randomNumber = parseInt(Math.random() * 1000);
-const money = cashMachine(randomNumber)
+const randomNumber = parseInt(Math.random() * 500);
+const money = await cashMachine(randomNumber);
+console.log(money)
 let html = '';
 
 money.map((cash) => {
