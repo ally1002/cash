@@ -1,6 +1,6 @@
 const cashMachine = async (amount) => {
     let result = [];
-    const notes = [25, 100, 50, 20, 10, 5, 2, 1];
+    const notes = [100, 50, 20, 10, 5, 2, 1];
     notes.sort((a, b) => b - a);
 
     notes.map((note) => {
@@ -13,10 +13,11 @@ const cashMachine = async (amount) => {
 }
 
 const randomNumber = parseInt(Math.random() * 500);
-const money = await cashMachine(randomNumber);
-console.log(money)
-let html = '';
+document.querySelector('.number').innerHTML = 'R$ ' + randomNumber;
 
+const money = await cashMachine(randomNumber);
+
+let html = '';
 money.map((cash) => {
     if (cash.count != 0) {
         html += `<div class="card-note">
@@ -26,5 +27,4 @@ money.map((cash) => {
     }
 });
 
-document.querySelector('.number').innerHTML = 'R$ ' + randomNumber;
 document.getElementById('list').innerHTML = html;
