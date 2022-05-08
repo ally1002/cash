@@ -5,24 +5,24 @@ body {
 }
 
 .number {
-    font-weight: bold;
-    color: #fff;
+    display: block;
+    margin: auto;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
 }
 
-.title .page, .number {
-    padding-top: 50px;
-    display: flex;
+.title .page {
     justify-content: center;
     align-items: center;
     color: #fff;
 }
 .title .page {
+    padding-top: 50px;
+    display: flex;
     font-weight: bold;
     font-size: 50px;
-}
-.title .number {
-    margin-top: -25px;
-    font-size: 25px;
 }
 
 .card-list {

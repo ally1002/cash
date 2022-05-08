@@ -1,30 +1,32 @@
-const cashMachine = async (amount) => {
-    let result = [];
-    const notes = [100, 50, 20, 10, 5, 2, 1];
-    notes.sort((a, b) => b - a);
+document.getElementById('number').addEventListener('input', async function () {
 
-    notes.map((note) => {
-        let count = Math.floor(amount / note);
-        amount = amount % note;
-        result.push({ note, count })
-    });
+    this.value = this.value.replace(/[^0-9]/g, '');
 
-    return result;
-}
+    const cashMachine = async (amount) => {
+        let result = [];
+        const notes = [100, 50, 20, 10, 5, 2, 1];
+        notes.sort((a, b) => b - a);
 
-const randomNumber = parseInt(Math.random() * 500);
-document.querySelector('.number').innerHTML = 'R$ ' + randomNumber;
+        notes.map((note) => {
+            let count = Math.floor(amount / note);
+            amount = amount % note;
+            result.push({ note, count })
+        });
 
-const money = await cashMachine(randomNumber);
+        return result;
+    }
 
-let html = '';
-money.map((cash) => {
-    if (cash.count != 0) {
-        html += `<div class="card-note">
+    const money = await cashMachine(this.value);
+
+    let html = '';
+    money.map((cash) => {
+        if (cash.count != 0) {
+            html += `<div class="card-note">
                     <div class="note">${cash.note}</div>
                     <div class="amount">${cash.count}</div>
-                </div>`;
-    }
-});
+                    </div>`;
+        }
+    });
 
-document.getElementById('list').innerHTML = html;
+    document.getElementById('list').innerHTML = html;
+});
